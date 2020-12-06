@@ -1,0 +1,10 @@
+https://docs.python.org/3/library/csv.html
+https://medium.com/data-hackers/escrita-e-leitura-de-arquivos-csv-em-python-6a256c608818
+https://www.youtube.com/watch?v=vmEHCJofslg
+https://medium.com/horadecodar/gráficos-de-barra-com-matplotlib-85628bfc4351
+
+Qual o maior fornecedor e a quantidade que ele distribuiu
+Qual o estado que recebeu a maior quantidade de respiradores no geral
+Qual a cidade que mais recebeu respiradores por estado
+qual estado recebeu maior quantidade de respirador por data
+Qual estado teve o maior montante de dinheiro direcionado
