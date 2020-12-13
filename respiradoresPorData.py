@@ -1,6 +1,5 @@
 import csv
 import pandas as pd
-import locale
 import matplotlib.pyplot as plot
 
 
@@ -76,36 +75,37 @@ def shellSort(quantidade, fornecedores, n):
 
 dados = pd.read_csv('distribuicao_respiradores.csv', encoding="utf-8", sep = ";")
 
-estados = []
+datas = []
 contador = 0
 
 for index, linha in dados.iterrows():
     if linha['ESTADO/MUNICIPIO'] == 'ESTADO':
-        if linha['DESTINO'] not in estados:
-            estados.append(linha['DESTINO'])
+        if linha['DATA DE ENTREGA'] not in datas:
+            datas.append(linha['DATA DE ENTREGA'])
             contador+=1
 
-montante_direcionado = [0]*contador
+quantidade_respiradores = [0]*contador
 
 for index, linha in dados.iterrows():
     if linha['ESTADO/MUNICIPIO'] == 'ESTADO':
-        indice = estados.index(linha['DESTINO'])
-        montante_direcionado[indice] += float(linha['VALOR'].replace(',', '.'))
-
-print(montante_direcionado)
+        indice = datas.index(linha['DATA DE ENTREGA'])
+        quantidade_respiradores[indice] += int(linha['QUANTIDADE'])
 
 
 
-#Insertionsort(montante_direcionado, estados)
-shellSort(montante_direcionado, estados, len(montante_direcionado))
-#radixSort(montante_direcionado, estados)
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+#Insertionsort(quantidade_respiradores, datas)
+#shellSort(quantidade_respiradores, datas, len(quantidade_respiradores))
+radixSort(quantidade_respiradores, datas)
+quantidade = []
+data = []
+for i in range(50):
+    quantidade.append(quantidade_respiradores[i])
+    data.append(datas[i])
 
-plot.barh(estados, montante_direcionado)
-plot.xlabel('Montante direcionado (R$)')
+plot.barh(data, quantidade)
+plot.xlabel('Quantidade respiradores')
 plot.ylabel('Estado')
-plot.title('Montande recebido por Estado')
-for i, v in enumerate(estados):
-    valor = locale.currency(montante_direcionado[i], grouping=True, symbol=None)
-    plot.text(montante_direcionado[i], v, str(valor))
+plot.title('Quantidade de respiradores entregues por Estado')
+for i, v in enumerate(data):
+    plot.text(quantidade_respiradores[i], v, str(quantidade_respiradores[i]))
 plot.show()
