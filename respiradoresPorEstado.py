@@ -2,6 +2,7 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plot
 
+
 def countingSort(quantidade, fornecedores, exp): 
   
     n = len(quantidade) 
@@ -69,41 +70,38 @@ def shellSort(quantidade, fornecedores, n):
             fornecedores[j] = aux2
         intervalo //= 2
 
+
+
+
 dados = pd.read_csv('distribuicao_respiradores.csv', encoding="utf-8", sep = ";")
 
-fornecedores = []
-contador = 0
-
-#print(dados.head(3))
-#print(dados.iloc[1,0])
-
-
-fornecedores = []
+estados = []
 contador = 0
 
 for index, linha in dados.iterrows():
-    if linha['FORNECEDOR'] not in fornecedores:
-            fornecedores.append(linha['FORNECEDOR'])
+    if linha['ESTADO/MUNICIPIO'] == 'ESTADO':
+        if linha['DESTINO'] not in estados:
+            estados.append(linha['DESTINO'])
             contador+=1
 
 quantidade_respiradores = [0]*contador
 
 for index, linha in dados.iterrows():
-    indice = fornecedores.index(linha['FORNECEDOR'])
-    quantidade_respiradores[indice] += int(linha['QUANTIDADE'])
+    if linha['ESTADO/MUNICIPIO'] == 'ESTADO':
+        indice = estados.index(linha['DESTINO'])
+        quantidade_respiradores[indice] += int(linha['QUANTIDADE'])
 
 
 
+Insertionsort(quantidade_respiradores, estados)
+#shellSort(quantidade_respiradores, estados, len(quantidade_respiradores))
+#radixSort(quantidade_respiradores, estados)
 
-#Insertionsort(quantidade_respiradores, fornecedores)
-#shellSort(quantidade_respiradores, fornecedores, len(quantidade_respiradores))
-radixSort(quantidade_respiradores, fornecedores)
 
-
-plot.barh(fornecedores, quantidade_respiradores)
-plot.xlabel('quantidade respiradores')
-plot.ylabel('Fornecedores')
-plot.title('Quantidade de respiradores entregues por fornecedores')
-for i, v in enumerate(fornecedores):
+plot.barh(estados, quantidade_respiradores)
+plot.xlabel('Quantidade respiradores')
+plot.ylabel('Estado')
+plot.title('Quantidade de respiradores entregues por Estado')
+for i, v in enumerate(estados):
     plot.text(quantidade_respiradores[i], v, str(quantidade_respiradores[i]))
 plot.show()
