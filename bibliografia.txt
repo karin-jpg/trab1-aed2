@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=vmEHCJofslg
 https://medium.com/horadecodar/gráficos-de-barra-com-matplotlib-85628bfc4351
 
 Qual o maior fornecedor e a quantidade que ele distribuiu - ok
-Qual o estado que recebeu a maior quantidade de respiradores no geral
+Qual o estado que recebeu a maior quantidade de respiradores no geral - ok
 Qual a cidade que mais recebeu respiradores por estado
-qual estado recebeu maior quantidade de respirador por data
+Qual a maior quantidade de 
 Qual estado teve o maior montante de dinheiro direcionado
