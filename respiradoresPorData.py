@@ -1,8 +1,9 @@
 import csv
 import pandas as pd
 import matplotlib.pyplot as plot
+import time
 
-
+#Trabalho 1 – Análise de dados do covid-19 no Brasil usando métodos de ordenação
 def countingSort(quantidade, fornecedores, exp): 
   
     n = len(quantidade) 
@@ -92,10 +93,11 @@ for index, linha in dados.iterrows():
         quantidade_respiradores[indice] += int(linha['QUANTIDADE'])
 
 
-
-#Insertionsort(quantidade_respiradores, datas)
+inicio = time.time()
+Insertionsort(quantidade_respiradores, datas)
 #shellSort(quantidade_respiradores, datas, len(quantidade_respiradores))
-radixSort(quantidade_respiradores, datas)
+#radixSort(quantidade_respiradores, datas)
+fim = time.time()
 quantidade = []
 data = []
 for i in range(50):
@@ -104,8 +106,9 @@ for i in range(50):
 
 plot.barh(data, quantidade)
 plot.xlabel('Quantidade respiradores')
-plot.ylabel('Estado')
-plot.title('Quantidade de respiradores entregues por Estado')
+plot.ylabel('Data')
+plot.title('Quantidade de respiradores entregues por Data')
 for i, v in enumerate(data):
     plot.text(quantidade_respiradores[i], v, str(quantidade_respiradores[i]))
+print(fim - inicio)
 plot.show()

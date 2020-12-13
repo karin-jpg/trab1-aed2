@@ -95,9 +95,9 @@ for index, linha in dados.iterrows():
 
 
 
-#Insertionsort(quantidade_respiradores, fornecedores)
+Insertionsort(quantidade_respiradores, fornecedores)
 #shellSort(quantidade_respiradores, fornecedores, len(quantidade_respiradores))
-radixSort(quantidade_respiradores, fornecedores)
+#radixSort(quantidade_respiradores, fornecedores)
 
 
 plot.barh(fornecedores, quantidade_respiradores)
